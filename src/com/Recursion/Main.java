@@ -36,3 +36,4 @@ public class Main {
     }
 }
 // in this the iteration will be till target because if the sum is  then why will we take 5 and 6.
+// and if the target will become zero will return the first answer.
