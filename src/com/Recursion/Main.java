@@ -23,17 +23,37 @@ public class Main {
     Output: 222616187
     Explanation: The answer must be returned modulo 109 + 7
 	 */
-        diceRoll("",3);
+        diceRoll("", 3);
+        ArrayList<String> list = diceRollList("",3);
+        System.out.println(list);
     }
-    public static void diceRoll(String p, int target){
-        if(target==0){
+
+    public static void diceRoll(String p, int target) {
+        if (target == 0) {
             System.out.println(p);
             return;
         }
-        for(int i=1;i<=6 && i<=target;i++){
-            diceRoll(p+i,target-i);
+        for (int i = 1; i <= 6 && i <= target; i++) {
+            diceRoll(p + i, target - i);
         }
     }
-}
 // in this the iteration will be till target because if the sum is  then why will we take 5 and 6.
 // and if the target will become zero will return the first answer.
+
+
+    // Now returning the answer in an arraylist.
+    public static ArrayList<String> diceRollList(String p,int target){
+        if(target==0){
+            ArrayList<String> list = new ArrayList<>();
+            list.add(p);
+            return list;
+        }
+        ArrayList<String> ans = new ArrayList<>();
+        for(int i=1;i<=6 && i<=target;i++){
+            ans.addAll(diceRollList(p+i,target-i));
+        }
+        return ans;
+    }
+
+
+}
